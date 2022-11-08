@@ -1,7 +1,9 @@
 import './styles.css';
 
-export function SocialMedia() {
+export function SocialMedia({ children, url }) {
   return (
-    <h1>Componente SocialMedia</h1>
+    <a className='social' href={url} target='_blank' rel='noopener noreferrer'>
+      {children}
+    </a>
   );
 }
