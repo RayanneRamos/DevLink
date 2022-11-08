@@ -9,17 +9,17 @@ export function Home() {
       <span>Veja meus links 👇</span>
       <main className='links'>
         <section className='link-area'>
-          <a href='#'>
+          <a href='/'>
             <p className='link-text'>Github</p>
           </a>
         </section>
         <section className='link-area'>
-          <a href='#'>
+          <a href='/'>
             <p className='link-text'>Twitter</p>
           </a>
         </section>
         <section className='link-area'>
-          <a href='#'>
+          <a href='/'>
             <p className='link-text'>Instagram</p>
           </a>
         </section>
