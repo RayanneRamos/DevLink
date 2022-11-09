@@ -48,6 +48,14 @@ export function Admin() {
             />
           </div>
         </section>
+        { nameInput !== '' && (
+          <div className="preview">
+            <label className="label">Veja como está ficando 👇</label>
+            <artcile className="list" style={{ marginTop: 8, backgroundColor: backgroundColorInput }}>
+              <p style={{ color: textColorInput }}>{nameInput}</p>
+            </artcile>
+          </div>
+        )}
         <button className="btn-register" type='submit'>
           Cadastrar <MdAddLink size={24} color='#fff' />
         </button>
