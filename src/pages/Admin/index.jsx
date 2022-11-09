@@ -5,18 +5,47 @@ import { Input } from '../../components/Input';
 import { MdAddLink } from 'react-icons/md';
 import { FiTrash2 } from 'react-icons/fi';
 import { useState } from 'react';
+import { db } from '../../services/firebaseConnection';
+import { addDoc, collection, onSnapshot, query, orderBy, doc, deleteDoc } from 'firebase/firestore';
+import { toast } from "react-toastify";
 
 export function Admin() {
   const [ nameInput, setNameInput ] = useState('');
   const [ urlInput, setUrlInput ] = useState('');
   const [ backgroundColorInput, setBackgroundColorInput ] = useState('#f1f1f1');
   const [ textColorInput, setTextColorInput ] = useState('#121212');
+
+  async function handleRegister(event) {
+    event.preventDefault();
+
+    if(nameInput === '' || urlInput === '') {
+      toast.warn('Preencha todos os campos!');
+      return;
+    }
+
+    addDoc(collection(db, 'links'), {
+      name: nameInput,
+      url: urlInput,
+      bg: backgroundColorInput,
+      color: textColorInput,
+      created: new Date(),
+    })
+    .then(() => {
+      setNameInput('');
+      setUrlInput('');
+      toast.success('Link registrado com sucesso!');
+    })
+    .catch((error) => {
+      toast.error('Ops erro ao salvar o link.');
+    });
+
+  }
   
   return (
     <div className="admin-container">
       <Header />
       <Logo />
-      <form className="form">
+      <form className="form" onSubmit={handleRegister}>
         <label className="label">Nome do link</label>
         <Input 
           placeholder='Nome do link'
