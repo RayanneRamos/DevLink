@@ -51,7 +51,7 @@ export function Admin() {
         { nameInput !== '' && (
           <div className="preview">
             <label className="label">Veja como está ficando 👇</label>
-            <artcile className="list" style={{ marginTop: 8, backgroundColor: backgroundColorInput }}>
+            <artcile className="list" style={{ marginBottom: 8, marginTop: 8, backgroundColor: backgroundColorInput }}>
               <p style={{ color: textColorInput }}>{nameInput}</p>
             </artcile>
           </div>
