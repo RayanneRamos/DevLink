@@ -2,11 +2,12 @@ import './styles.css';
 import { SocialMedia } from '../../components/SocialMedia';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
-import { getDocs, collection, orderBy, query } from 'firebase/firestore';
+import { getDocs, collection, orderBy, query, doc, getDoc } from 'firebase/firestore';
 import { db } from '../../services/firebaseConnection';
 
 export function Home() {
   const [ links, setLinks ] = useState([]);
+  const [ socialLinks, setSocialLinks ] = useState({});
 
   useEffect(() => {
     async function loadLinks() {
@@ -33,6 +34,23 @@ export function Home() {
     loadLinks();
   },[]);
 
+  useEffect(() => {
+    async function loadSocialLinks() {
+      const docRef = doc(db, 'social', 'link');
+      
+      await getDoc(docRef).then((snapshot) => {
+        if(snapshot.data() !== undefined) {
+          setSocialLinks({
+            github: snapshot.data().github,
+            instagram: snapshot.data().instagram,
+            twitter: snapshot.data().twitter,
+          });
+        }
+      });
+    }
+
+    loadSocialLinks();
+  }, []);
 
   return (
     <div className='home-container'>
@@ -57,17 +75,19 @@ export function Home() {
             </section>
           )
         }) }
-        <footer>
-          <SocialMedia url='https://github.com/RayanneRamos'>
-            <FaGithub size={35} color='#fff' />
-          </SocialMedia>
-          <SocialMedia url='https://www.instagram.com/rayanne_ramos/'>
-            <FaInstagram size={35} color='#fff' />
-          </SocialMedia>
-          <SocialMedia url='https://twitter.com/RaayanneRamos'>
-            <FaTwitter size={35} color='#fff' />
-          </SocialMedia>
-        </footer>
+        { links.length !== 0 && Object.keys(socialLinks).length > 0 && (
+          <footer>
+            <SocialMedia url={socialLinks?.github}>
+              <FaGithub size={35} color='#fff' />
+            </SocialMedia>
+            <SocialMedia url={socialLinks?.instagram}>
+              <FaInstagram size={35} color='#fff' />
+            </SocialMedia>
+            <SocialMedia url={socialLinks?.twitter}>
+              <FaTwitter size={35} color='#fff' />
+            </SocialMedia>
+          </footer>
+        )}
       </main>
     </div>
   );
