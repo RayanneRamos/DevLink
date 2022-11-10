@@ -110,6 +110,22 @@ export function Admin() {
         </button>
       </form>
       <h2 className="title">Meus links</h2>
+      { links.map((item, index) => {
+        return (
+          <article 
+            key={index}
+            className="list animate-pop"
+            style={{ backgroundColor: item.bg, color: item.color }}
+          >
+            <p>{item.name}</p>
+            <div>
+              <button className="btn-delete">
+                <FiTrash2 size={18} color='#fff' />
+              </button>
+            </div>
+          </article>
+        )
+      })}
     </div>
   );
 }
