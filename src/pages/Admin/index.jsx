@@ -58,7 +58,11 @@ export function Admin() {
     .catch((error) => {
       toast.error('Ops erro ao salvar o link.');
     });
+  }
 
+  async function handleDeleteLink(id) {
+    const docRef = doc(db, 'links', id);
+    await deleteDoc(docRef);
   }
   
   return (
@@ -119,7 +123,7 @@ export function Admin() {
           >
             <p>{item.name}</p>
             <div>
-              <button className="btn-delete">
+              <button className="btn-delete" onClick={() => handleDeleteLink(item.id)}>
                 <FiTrash2 size={18} color='#fff' />
               </button>
             </div>
