@@ -21,6 +21,13 @@
   - [x] Aula 04 | Consumir banco de dados
   - [x] Aula 05 | Levando você ao próximo nível
 
+## 🌟 Funcionalidades
+
+1. **Adição de Links**: O usuário pode adicionar links personalizados, como suas redes sociais, sites ou outros links de interesse. 
+2. **Exibição de Links**: Os links são apresentados de forma limpa e organizada, permitindo fácil acesso às redes sociais ou outras páginas importantes. 
+3. **Edição e Remoção**: O usuário pode editar ou remover links já adicionados conforme necessário.
+4. **Responsivo**: O layout é otimizado para funcionar bem em dispositivos móveis, garantindo boa usabilidade em qualquer tela.
+
 ## 🧪 Technologies
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
