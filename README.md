@@ -28,7 +28,7 @@
 3. **Edição e Remoção**: O usuário pode editar ou remover links já adicionados conforme necessário.
 4. **Responsivo**: O layout é otimizado para funcionar bem em dispositivos móveis, garantindo boa usabilidade em qualquer tela.
 
-## 🧪 Technologies
+## 🧪 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
